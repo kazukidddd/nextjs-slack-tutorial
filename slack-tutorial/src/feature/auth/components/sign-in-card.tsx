@@ -1,3 +1,5 @@
+import { FcGoogle } from "react-icons/fc"
+
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -51,6 +53,7 @@ export const SignInCard = () => {
                         size="lg"
                         className="w-full relative"
                     >
+                        <FcGoogle />
                         Continue with Google
                     </Button>
                 </div>

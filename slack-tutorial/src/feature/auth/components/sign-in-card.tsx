@@ -53,7 +53,7 @@ export const SignInCard = () => {
                         size="lg"
                         className="w-full relative"
                     >
-                        <FcGoogle />
+                        <FcGoogle className="size-5" />
                         Continue with Google
                     </Button>
                 </div>

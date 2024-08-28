@@ -1,7 +1,7 @@
 export const SignUpCard = () => {
-    return (
-        <div>
-            Sign Up Card
-        </div>
-    )
+  return (
+    <div>
+      Sign Up Card
+    </div>
+  )
 }

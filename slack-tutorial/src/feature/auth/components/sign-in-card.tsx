@@ -1,17 +1,23 @@
-import { FaGithub, FaGoogle } from "react-icons/fa"
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
-import { Button } from "@/components/ui/button"
+
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Separator } from "@radix-ui/react-separator"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@radix-ui/react-separator";
+import { SignInFlow } from "../types";
 
-export const SignInCard = () => {
+interface SignInCardProps {
+  setState: (state: SignInFlow) => void;
+};
+
+export const SignInCard = ({ setState }: SignInCardProps) => {
   return (
     <Card className="w-full h-full p-8">
       <CardHeader className="px-0 pt-0">
@@ -68,7 +74,7 @@ export const SignInCard = () => {
           </Button>
         </div>
         <p className="text-xs text-muted-foreground">
-          Don&apos;t have an account? <span className="text-sky-700 hover:underline cursor-pointer">Sign up</span>
+          Don&apos;t have an account? <span onClick={() => setState("signUp")} className="text-sky-700 hover:underline cursor-pointer">Sign up</span>
         </p>
       </CardContent>
     </Card>

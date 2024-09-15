@@ -2,11 +2,13 @@
 
 
 import { UserButton } from "@/feature/auth/components/user-button";
-import { useCreateWorkspaceModal } from "@/feature/workspaces/store/use-create-workspace-modal";
 import { useGetWorkspaces } from "@/feature/workspaces/api/use-get-workspaces";
+import { useCreateWorkspaceModal } from "@/feature/workspaces/store/use-create-workspace-modal";
+import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
 
 export default function Home() {
+  const router = useRouter();
   const [open, setOpen] = useCreateWorkspaceModal();
   const { data, isLoading } = useGetWorkspaces();
 
@@ -16,11 +18,12 @@ export default function Home() {
     if (isLoading) return;
 
     if (workspaceId) {
+      router.push(`/workspace/${workspaceId}`);
       console.log("Redirect to workspace");
     } else if (!open) {
       setOpen(true);
     }
-  }, [workspaceId, isLoading, open, setOpen]);
+  }, [workspaceId, isLoading, open, setOpen, router]);
 
   return (
     <div>

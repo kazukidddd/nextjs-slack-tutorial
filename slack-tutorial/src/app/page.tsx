@@ -4,7 +4,8 @@
 import { UserButton } from "@/feature/auth/components/user-button";
 import { useGetWorkspaces } from "@/feature/workspaces/api/use-get-workspaces";
 import { useCreateWorkspaceModal } from "@/feature/workspaces/store/use-create-workspace-modal";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+
 import { useEffect, useMemo } from "react";
 
 export default function Home() {

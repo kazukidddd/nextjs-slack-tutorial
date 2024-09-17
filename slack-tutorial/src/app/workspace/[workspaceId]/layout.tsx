@@ -8,7 +8,9 @@ const WorkspaceIdLayout = ({ children }: WorkspaceIdLayoutProps) => {
   return (
     <div className="h-full">
       <Toolbar />
-      {children}
+      <div className="flex h-[calc(100vh-40px)]">
+        {children}
+      </div>
     </div>
   );
 }

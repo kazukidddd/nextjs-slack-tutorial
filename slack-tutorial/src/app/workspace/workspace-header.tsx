@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import { Doc } from "../../../convex/_generated/dataModel";
 
 interface WorkspaceHeaderProps {
   workspace: Doc<"workspaces">
+  isAdmin: boolean;
 }
 
-export const WorkspaceHeader = ({ workspace }: WorkspaceHeaderProps) => {
+export const WorkspaceHeader = ({ workspace, isAdmin }: WorkspaceHeaderProps) => {
   return (
     <div className="flex items-center justify-between px-4 h-[49px] gap-0.5">
       <DropdownMenu>
@@ -21,9 +22,9 @@ export const WorkspaceHeader = ({ workspace }: WorkspaceHeaderProps) => {
             <ChevronDown className="size-4 ml-1 shrink-0" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent side="bottom" align="start" className="w-64">
+        <DropdownMenuContent side="bottom" align="start" className="w-64 bg-white rounded-md">
           <DropdownMenuItem
-            className="cursor-pointer capitalize"
+            className="cursor-pointer capitalize flex flex-row items-center p-1.5 hover:bg-gray-100"
           >
             <div className="size-9 relative overflow-hidden bg-[#616061] text-white font-semibold text-xl rounded-md flex items-center justify-center mr-2">
               {workspace.name.charAt(0).toUpperCase()}
@@ -33,6 +34,24 @@ export const WorkspaceHeader = ({ workspace }: WorkspaceHeaderProps) => {
               <p className="text-xs text-muted-foreground">Active workspace</p>
             </div>
           </DropdownMenuItem>
+          {isAdmin && (
+            <>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                className="cursor-pointer p-3 hover:bg-gray-100"
+                onClick={() => { }}
+              >
+                Invite people to {workspace.name}
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                className="cursor-pointer p-3 hover:bg-gray-100"
+                onClick={() => { }}
+              >
+                Preferences
+              </DropdownMenuItem>
+            </>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

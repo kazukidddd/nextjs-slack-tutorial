@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Hint } from "@/components/ui/hint";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { ChevronDown, ListFilter, SquarePen } from "lucide-react";
+import { ChevronDown, ListFilter } from "lucide-react";
 import { Doc } from "../../../convex/_generated/dataModel";
 
 interface WorkspaceHeaderProps {
@@ -61,11 +61,11 @@ export const WorkspaceHeader = ({ workspace, isAdmin }: WorkspaceHeaderProps) =>
             <ListFilter className="size-4" />
           </Button>
         </Hint>
-        <Hint label="New message" side="bottom">
+        {/* <Hint label="New message" side="bottom">
           <Button variant="transparent" size="iconSm">
             <SquarePen className="size-4" />
           </Button>
-        </Hint>
+        </Hint> */}
       </div>
     </div>
   );

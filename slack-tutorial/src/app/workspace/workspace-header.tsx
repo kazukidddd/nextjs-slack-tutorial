@@ -1,5 +1,5 @@
+import { Hint } from "@/components/hint";
 import { Button } from "@/components/ui/button";
-import { Hint } from "@/components/ui/hint";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { ChevronDown, ListFilter, SquarePen } from "lucide-react";
 import { Doc } from "../../../convex/_generated/dataModel";

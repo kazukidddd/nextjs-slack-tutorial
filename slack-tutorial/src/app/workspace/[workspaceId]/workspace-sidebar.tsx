@@ -4,7 +4,7 @@ import { useCurrentMember } from "@/feature/members/api/use-current-member";
 import { useGetWorkspace } from "@/feature/workspaces/api/use-get-workspace";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
 import { AlertTriangle, Loader } from "lucide-react";
-import { WorkspaceHeader } from "../workspace-header";
+import { WorkspaceHeader } from "./workspace-header";
 
 export const WorkspaceSidebar = () => {
   const workspaceId = useWorkspaceId();

@@ -12,11 +12,15 @@ interface WorkspaceHeaderProps {
 }
 
 export const WorkspaceHeader = ({ workspace, isAdmin }: WorkspaceHeaderProps) => {
-  const [open, setOpen] = useState(false);
+  const [preferencesOpen, setPreferencesOpen] = useState(false);
 
   return (
     <>
-      <PreferencesModal open={open} setOpen={setOpen} initialValue={workspace.name} />
+      <PreferencesModal
+        open={preferencesOpen}
+        setOpen={setPreferencesOpen}
+        initialValue={workspace.name}
+      />
       <div className="flex items-center justify-between px-4 h-[49px] gap-0.5">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -53,7 +57,7 @@ export const WorkspaceHeader = ({ workspace, isAdmin }: WorkspaceHeaderProps) =>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="cursor-pointer p-3 hover:bg-gray-100"
-                  onClick={() => setOpen(true)}
+                  onClick={() => setPreferencesOpen(true)}
                 >
                   Preferences
                 </DropdownMenuItem>

@@ -1,5 +1,6 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { TrashIcon } from "lucide-react";
 import { useState } from "react";
 
 interface PreferencesModalProps {
@@ -36,6 +37,14 @@ export const PreferencesModal = ({
               {value}
             </p>
           </div>
+          <button
+            disabled={false}
+            onClick={() => { }}
+            className="flex items-center gap-x-2 px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50 text-rose-600"
+          >
+            <TrashIcon className="size-4" />
+            <p className="text-sm font-semibold">Delete workspace</p>
+          </button>
         </div>
       </DialogContent>
     </Dialog>

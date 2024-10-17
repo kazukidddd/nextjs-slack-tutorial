@@ -2,9 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { useRemoveWorkspace } from "@/feature/workspaces/api/use-remove-workspace";
 import { useUpdateWorkspace } from "@/feature/workspaces/api/use-update-workspace";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
 import { TrashIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -20,11 +22,30 @@ export const PreferencesModal = ({
   initialValue
 }: PreferencesModalProps) => {
   const workspaceId = useWorkspaceId();
+  const router = useRouter();
+
   const [value, setValue] = useState(initialValue);
   const [editOpen, setEditOpen] = useState(false);
 
   const { mutate: updateWorkspace, isPending: isUpdatingWorkspace } = useUpdateWorkspace();
-  const { mutate: removeWorkspace, isPending: isRemovingWorkspace } = useUpdateWorkspace();
+  const { mutate: removeWorkspace, isPending: isRemovingWorkspace } = useRemoveWorkspace();
+
+  const handleRemove = async () => {
+    await removeWorkspace({
+      id: workspaceId,
+
+    }, {
+      onSuccess: () => {
+
+        toast.success("Workspace removed");
+        router.replace("/");
+
+      },
+      onError: () => {
+        toast.error("Failed to remove workspace");
+      },
+    });
+  }
 
   const handleEdit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -99,8 +120,8 @@ export const PreferencesModal = ({
             </DialogContent>
           </Dialog>
           <button
-            disabled={false}
-            onClick={() => { }}
+            disabled={isRemovingWorkspace}
+            onClick={handleRemove}
             className="flex items-center gap-x-2 px-5 py-4 bg-white rounded-lg border cursor-pointer hover:bg-gray-50 text-rose-600"
           >
             <TrashIcon className="size-4" />

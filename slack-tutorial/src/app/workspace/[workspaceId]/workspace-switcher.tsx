@@ -36,7 +36,7 @@ export const WorkspaceSwitcher = () => {
       <DropdownMenuContent side="bottom" align="start" className="w-64">
         <DropdownMenuItem
           onClick={() => router.push(`/workspace/${workspaceId}`)}
-          className="cursor-pointer flex-col justify-start items-start capitalize">
+          className="cursor-pointer flex flex-col justify-start items-start capitalize p-1.5">
           {workspace?.name}
           <span className="text-xs text-muted-foreground">
             Active workspace
@@ -45,7 +45,7 @@ export const WorkspaceSwitcher = () => {
         {filteredWorkspaces?.map((workspace) => (
           <DropdownMenuItem
             key={workspace._id}
-            className="cursor-pointer capitalize overflow-hidden"
+            className="cursor-pointer capitalize overflow-hidden flex items-center p-1.5 hover:bg-gray-100"
             onClick={() => router.push(`/workspace/${workspace._id}`)}
           >
             <div className="shrink-0 size-9 relative overflow-hidden bg-[#616061] text-white font-semibold text-lg rounded-md flex items-center justify-center mr-2">
@@ -55,7 +55,7 @@ export const WorkspaceSwitcher = () => {
           </DropdownMenuItem>
         ))}
         <DropdownMenuItem
-          className="cursor-pointer"
+          className="cursor-pointer capitalize flex items-center p-1.5 hover:bg-gray-100"
           onClick={() => setOpen(true)}
         >
           <div className="size-9 relative overflow-hidden bg-[#F2F2F2] text-slate-800 font-semibold text-lg rounded-md flex items-center justify-center mr-2">

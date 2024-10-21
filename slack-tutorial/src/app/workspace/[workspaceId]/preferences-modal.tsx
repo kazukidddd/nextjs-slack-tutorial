@@ -35,7 +35,13 @@ export const PreferencesModal = ({
   const { mutate: updateWorkspace, isPending: isUpdatingWorkspace } = useUpdateWorkspace();
   const { mutate: removeWorkspace, isPending: isRemovingWorkspace } = useRemoveWorkspace();
 
-  const handleRemove = () => {
+  const handleRemove = async () => {
+    const ok = await confirm();
+
+    if (!ok) {
+      return;
+    }
+
     removeWorkspace({
       id: workspaceId,
 

@@ -34,14 +34,14 @@ export const WorkspaceSwitcher = () => {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent side="bottom" align="start" className="w-64">
-        {/* <DropdownMenuItem
+        <DropdownMenuItem
           onClick={() => router.push(`/workspace/${workspaceId}`)}
           className="cursor-pointer flex flex-col justify-start items-start capitalize p-1.5">
           {workspace?.name}
           <span className="text-xs text-muted-foreground">
             Active workspace
           </span>
-        </DropdownMenuItem> */}
+        </DropdownMenuItem>
         {filteredWorkspaces?.map((workspace) => (
           <DropdownMenuItem
             key={workspace._id}

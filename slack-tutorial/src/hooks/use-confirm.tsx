@@ -5,7 +5,7 @@ import { useState } from "react";
 export const useConfirm = (
   title: string,
   message: string,
-): [any, any] => {
+): [() => JSX.Element, () => Promise<unknown>] => {
   const [promise, setPromise] = useState<{ resolve: (value: boolean) => void } | null>(null);
 
   const confirm = () => new Promise((resolve, reject) => {
@@ -27,7 +27,7 @@ export const useConfirm = (
   };
 
   const ConfirmDialog = () => {
-    <Dialog open={promise !== null}>
+    return <Dialog open={promise !== null}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>

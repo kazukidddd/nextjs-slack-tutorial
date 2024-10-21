@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useState } from "react";
 
 export const useConfirm = (
@@ -14,10 +16,44 @@ export const useConfirm = (
     setPromise(null);
   };
 
+  const handleCancel = () => {
+    promise?.resolve(false);
+    handleClose();
+  };
+
   const handleConfirm = () => {
     promise?.resolve(true);
     handleClose();
   };
 
-  return ["", ""];
+  const ConfirmDialog = () => {
+    <Dialog open={promise !== null}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>
+            {title}
+          </DialogTitle>
+          <DialogDescription>
+            {message}
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter className="pt-2">
+          <Button
+            onClick={handleCancel}
+            variant="outline"
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={handleConfirm}
+          >
+            Confirm
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+
+    </Dialog>
+  }
+
+  return [ConfirmDialog, confirm];
 };

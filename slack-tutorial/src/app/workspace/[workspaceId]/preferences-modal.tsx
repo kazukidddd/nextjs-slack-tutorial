@@ -36,7 +36,6 @@ export const PreferencesModal = ({
 
     }, {
       onSuccess: () => {
-
         toast.success("Workspace removed");
         router.replace("/");
 
